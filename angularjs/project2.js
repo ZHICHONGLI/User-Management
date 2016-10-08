@@ -344,7 +344,6 @@
      $scope.addUser = function() {
          usersFactory.addUser($scope, popId, $location);
          console.log(popId);
-         //alert('Saved, Please Back!');
          // $location.path('/list');
      };
      $scope.filename = "";
