@@ -282,19 +282,10 @@
          //$location.path('/');
      };
      $scope.sort = function(sortBy) {
-             $scope.sortKey = sortBy;
-             $scope.reverse = !$scope.reverse;
-         }
-         /*
-         $scope.addUser = function() {
+         $scope.sortKey = sortBy;
+         $scope.reverse = !$scope.reverse;
+     }
 
-             $scope.users.push({ id: $scope.users[$scope.users.length - 1].id + 1, fName: $scope.fName, lName: $scope.lName, Title: $scope.Title, Sex: $scope.Sex, Age: $scope.Age });
-             //		console.log($scope.users[$scope.users.length-1].id+"--"+$scope.users[$scope.users.length-1].fName);
-             //		$scope.users.push(user);
-             //$scope.hideform = !$scope.hideform;
-             // $location.path('/');
-            
-         };  */
 
      $scope.$watch('passw1', function() { $scope.test(); });
      $scope.$watch('passw2', function() { $scope.test(); });
