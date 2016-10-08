@@ -1,0 +1,32 @@
+<div class="w3-container">
+    <form>
+        <h3>Edit User:</h3>
+        <label>First Name:</label>
+        <input class="w3-input w3-border" type="text" ng-model="fName" ng-disabled="!edit" placeholder="First Name">
+        <br/>
+        <label>Last Name:</label>
+        <input class="w3-input w3-border" type="text" ng-model="lName" ng-disabled="!edit" placeholder="Last Name">
+        <br/>
+        <label>Title:</label>
+        <input class="w3-input w3-border" type="text" ng-model="Title" ng-disabled="!edit" placeholder="Title">
+        <br/>
+        <label>Sex:</label>
+        <input class="w3-input w3-border" type="text" ng-model="Sex" ng-disabled="!edit" placeholder="Sex">
+        <br/>
+        <label>Age:</label>
+        <input class="w3-input w3-border" type="text" ng-model="Age" ng-disabled="!edit" placeholder="Age">
+        <br/>
+        <label>Password:</label>
+        <input class="w3-input w3-border" type="password" ng-model="passw1" placeholder="Password">
+        <br/>
+        <label>Repeat:</label>
+        <input class="w3-input w3-border" type="password" ng-model="passw2" placeholder="Repeat Password">
+        <br/>
+
+        <button class="w3-btn w3-green w3-ripple" ng-click="saveEdit()">&#10004; Save Changes</button>
+
+        <a href="#/list"><button class="w3-btn w3-green w3-ripple" ng-click="">Back</button></a>
+
+
+    </form>
+</div>

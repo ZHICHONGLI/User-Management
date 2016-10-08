@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<div class="w3-container">
+
+    <h3>Direct Report List {{mgridx}}</h3>
+    <hr>
+    <div style="height:700px;">
+        <div>
+            <table class="w3-table w3-bordered w3-striped">
+                <tr>
+                    <th>Image</th>
+                    <th ng-click="sort('Name')">Name</th>
+                    <th ng-click="sort('Title')">Title</th>
+                    <th ng-click="sort('Manager')">Manager</th>
+                    <th ng-click="sort('Direct Reports')">Direct Reports</th>
+                </tr>
+
+                <tr ng-repeat="user in mgrOpt | filter: { mgrId : mgridx }:true ">
+                    <td>
+                        <a ng-href="#detail/{{user.id}}"><img ng-src="http://localhost:8080/images/{{user.id}}.jpg" class="img-circle" alt="Image" width="100px" /></a>
+                    </td>
+                    <td>{{ user.Name }}</td>
+                    <td>{{ user.Title }}</td>
+                    <td><a href="#detail/{{user.mgrId}}">{{user.mgrName}}</a></td>
+                    <td><a href="#drlist/{{user.id}}">{{user.drNum}}</a></td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+        <a href="#/">
+            <button class="btn btn-success">BACK TO HOME PAGE</button>
+        </a>
+    </div>
+</div>
+
+</html>

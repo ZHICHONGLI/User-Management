@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<div class="w3-container">
+
+    <h3>Users</h3>
+    <label>Search</label>
+    <input type="text" ng-model="search" placeholder="Search">
+    <a href="#add/{{idcount}}">
+        <button class="w3-btn w3-green w3-ripple" ng-model="hideform">&#9998; Create New User</button>
+    </a>
+    <label>{{idcount}}</label>
+    <hr>
+    <div style="height:1000px;">
+        <!--  <div style="clear: both;"></div>  -->
+        <div infinite-scroll="scrollMore()" infinite-scroll-distance="0">
+            <table class="w3-table w3-bordered w3-striped">
+                <tr>
+                    <th>Image</th>
+                    <th ng-click="sort('Name')">Name</th>
+                    <th ng-click="sort('Title')">Title</th>
+                    <th ng-click="sort('mgrName')">Manager</th>
+                    <th ng-click="sort('drNum')">Direct Reports</th>
+                    <th>Delete</th>
+                </tr>
+
+                <tr ng-repeat="user in userData |filter: search | orderBy:sortKey:reverse">
+                    <!--  <td>
+                        <!--<button class="w3-btn w3-ripple" ng-click="editUser(user.id)">&#9998; Edit</button> -->
+                    <!--     <button class="w3-btn w3-ripple" ng-click="userDetail(user.id)">&#9998; Detail</button>
+                    </td>  -->
+                    <td>
+                        <a ng-href="#detail/{{user.id}}"><img ng-src="http://localhost:8080/images/{{user.id}}.jpg" class="img-thumbnail" alt="Image" width="100px" /></a>
+                    </td>
+                    <td>{{ user.Name }}</td>
+                    <td>{{ user.Title }}</td>
+                    <td><a href="#detail/{{user.mgrId}}">{{user.mgrName}}</a></td>
+                    <td><a href="#drlist/{{user.id}}">{{user.drNum}}</a></td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="delUser(user.id)">&#9249</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+
+    <!--
+    <button ng-click="preP()" ng-disabled="currentPage==1" class="w3-btn w3-white w3-border w3-border-blue w3-round">&#10094;Previous</button>
+    <span ng-repeat="page in pages"><button ng-click="setPage(page)" ng-disabled="currentPage == page" class="w3-btn w3-white w3-border w3-border-blue w3-round">{{page}}</button> </span>
+    <button ng-click="nextP()" ng-disabled="currentPage == totalPage" class="w3-btn w3-white w3-border w3-border-blue w3-round">Next &#10095;</button>
+    <br><br>  -->
+
+
+</div>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<div class="container-fluid">
+    <div class="row">
+        <h3>Create New User:</h3>
+        <p>Current Id: {{currentId}}</p>
+        <hr>
+        <div class="col-md-6">
+            <form>
+                <label>Name:</label>
+                <input class="w3-input w3-border" type="text" ng-model="Name" placeholder="Name">
+                <br/>
+                <label>Title:</label>
+                <select class="w3-input w3-border" type="text" ng-model="Title" ng-options="x for x in titleSelect"></select>
+                <br/>
+                <label>Sex:</label>
+                <select class="w3-input w3-border" type="text" ng-model="Sex" ng-options="x for x in genderOption"></select>
+                <br/>
+                <label>Age:</label>
+                <input class="w3-input w3-border" type="text" ng-model="Age" placeholder="Age">
+                <br/>
+                <label>Cell Phone:</label>
+                <input class="w3-input w3-border" type="tel" ng-model="cPhone" placeholder="Cell Phone">
+                <br/>
+                <label>Email:</label>
+                <input class="w3-input w3-border" type="email" ng-model="email" placeholder="Repeat Password">
+                <br/>
+                <button class="w3-btn w3-green w3-ripple" ng-click="addUser()">&#10004; Save New</button>
+                <a href="#/"><button class="w3-btn w3-green w3-ripple">Back</button></a>
+
+            </form>
+        </div>
+        <div class="col-md-6">
+            <label>Photo:</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <img id="showPre" class="img-thumbnail" alt="Image" width="220px" />
+                </div>
+                <div class="col-md-6">
+                    <div>* .jpg file only</div>
+                    <form enctype="multipart/form-data" action="/uploadPhoto" method="POST">
+                        <input type="text" name="photoName" ng-value="currentId+'.'+fileExt">
+                        <input type="file" id="photoPre" name="photoFile" placeholder="Select File" />
+                        <input type="text" name="filename" ng-value="fileExt">
+                        <input type="submit" value="Upload Image" name="submit" />
+                    </form>
+                    <input type="text" ng-value="currentId+'.'+fileExt" ng-model="fileN">
+                    <p>TEST NG-MODEL {{fileN}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <label>Choose Manager:</label>
+                <select class="w3-input w3-border" type="text" ng-model="mgrObj" placeholder="Manager Name">
+                    <option ng-repeat="mgr in mgrOpt" value="{{mgr}}">{{mgr.Name}}_____id: {{mgr.id}}_____title: {{mgr.Title}}_____Gender: {{mgr.Sex}}</option>
+                </select>
+                <label>Manager Name:</label>
+                <select class="w3-input w3-border" type="text" ng-model="mgrName" placeholder="Manager Name">
+                    <option ng-repeat="mgr in mgrOpt" value="{{mgr.Name}}">{{mgr.Name}}</option>
+                </select>
+                <label>Manager ID:</label>
+                <select class="w3-input w3-border" type="number" ng-model="mgrId" placeholder="Manager ID">
+                    <option ng-repeat="mgr in mgrOpt" value="{{mgr.id}}">{{mgr.id}}</option>
+                </select>
+                <p>Choosed manager name is: {{mgrName}}</p>
+                <p>Choosed manager id is: {{mgrId}}</p>
+                <label>Directreport Num:</label>
+                <input class="w3-input w3-border" type="number" ng-model="drNum">
+                <br/>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    document.getElementById("photoPre").onchange = function() {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("showPre").src = e.target.result;
+        };
+
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+
+    };
+</script>

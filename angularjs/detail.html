@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<div class="container-fluid">
+    <h3>Details:</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+
+                <label>Name:</label>
+                <input class="form-control" type="text" ng-model="Name" ng-disabled="!edit">
+                <br/>
+                <label>Title:</label>
+                <!-- <input class="form-control" type="text" ng-model="Title" ng-disabled="!edit"> -->
+                <select class="form-control" type="text" ng-model="Title" ng-options="x for x in titleSelect" ng-disabled="!edit"></select>
+                <br/>
+                <label>Gender:</label>
+                <!--<input class="form-control" type="text" ng-model="Sex" ng-disabled="!neveredit"> -->
+                <select class="form-control" type="text" ng-model="Sex" ng-options="x for x in genderOption" ng-disabled="!edit"></select>
+                <br/>
+                <label>Cell Phone: <a ng-href="tel:{{user.cPhone}}">&#128222;</a></label>
+                <input class="form-control" type="text" ng-model="cPhone" ng-disabled="!edit">
+                <br/>
+                <label>E-mail: <a ng-href="mailto:{{user.email}}">&#128231;</a></label>
+                <input class="form-control" type="text" ng-model="email" ng-disabled="!edit">
+                <br/>
+                <label>Manager:</label><a href="#detail/{{mgrId}}">&#127919;</a> pre mgr id: {{premgrid}}
+                <input class="form-control" type="text" ng-model="mgrName" ng-disabled="!neveredit">
+                <select class="form-control" type="text" ng-model="mgrObj" ng-show="edit" placeholder="{{user.mgrName}}">
+                <option ng-repeat="mgr in mgrOpt" value="{{mgr}}">{{mgr.Name}}_____id: {{mgr.id}}_____title: {{mgr.Title}}_____Gender: {{mgr.Sex}}</option>
+                </select>
+                <button class="btn btn-danger" ng-click="clrmgr()" ng-show="edit">clear manager info</button>
+                <p>BINDING TEST FOR NG-MODEL: mgrName: {{mgrName}}, mgrId: {{mgrId}} </p>
+                <hr>
+                <span>This droplist contains no lower level staffs of current employee</span>
+                <select class="form-control" type="text" ng-model="user">{{user.mgrName}}           
+                <option ng-repeat="mgr in mgrtest" value="{{mgr}}">{{mgr.Name}}_____id: {{mgr.id}}_____title: {{mgr.Title}}_____Gender: {{mgr.Sex}}</option> 
+                </select>
+                <hr>
+                <label>Direct Reports:</label>
+                <a href="#drlist/{{user.id}}">&#22863;</a>
+                <input class="form-control" type="text" ng-model="drNum" ng-disabled="!edit">
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <label>Photo:</label>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img ng-src="{{imgPath}}" class="img-thumbnail" alt="Image" width="220px" />
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" type="file" ng-click="editImg()">Edit Image</button>
+                        <div ng-show="editImgdo">* .jpg file only</div>
+                        <form enctype="multipart/form-data" action="/uploadPhoto" method="POST" ng-show="editImgdo">
+
+                            <input type="text" name="photoName" ng-value="imgid+'.jpg'">
+                            <input type="file" name="photoFile" placeholder="Select File" />
+                            <input type="submit" value="Upload Image" name="submit" />
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                <button class="btn btn-primary" ng-click="doEdit()">Edit</button>
+                <button class="btn btn-primary" ng-click="saveEdit()" ng-disabled="!edit">Save Edit</button>
+                <hr>
+                <a href="#/">
+                    <button class="btn btn-success">BACK TO HOME PAGE</button>
+                </a>
+
+                <button class="btn btn-primary" ng-click="testbtn()">test mgr change</button>
+
+            </div>
+        </div>
+    </div>
+</div>
